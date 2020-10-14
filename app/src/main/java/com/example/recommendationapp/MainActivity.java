@@ -18,4 +18,9 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(getApplicationContext(), newMovieActivity01.class);
         startActivity(intent);
     }
+
+    public void mainOldClick(View v){
+        Intent intent = new Intent(getApplicationContext(), oldMovieActivity01.class);
+        startActivity(intent);
+    }
 }
