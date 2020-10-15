@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">Recommendation App</string>
     <string-array name="Movies">
-        <item>Test1</item>
-        <item>Test2</item>
-        <item>Test3</item>
+        <item>Toy Story (1995)</item>
+        <item>Jumanji (1995)</item>
+        <item>Grumpier Old Men (1995)</item>
     </string-array>
 </resources>
