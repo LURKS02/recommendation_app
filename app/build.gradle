@@ -6,7 +6,7 @@ android {
 
     defaultConfig {
         applicationId "com.example.recommendationapp"
-        minSdkVersion 16
+        minSdkVersion 26
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
@@ -20,7 +20,45 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    android.packagingOptions {
+        exclude 'META-INF/DEPENDENCIES'
+    }
+    configurations {
+        implementation.exclude group: 'org.objenesis', module: 'objenesis'
+        implementation.exclude group: 'commons-beanutils', module: 'commons-beanutils-core'
+        implementation.exclude group: 'commons-beanutils', module: 'commons-beanutils'
+        implementation.exclude group: 'com.esotericsoftware.reflectasm', module: 'reflectasm'
+        implementation.exclude group: 'stax', module: 'stax-api'
+        implementation.exclude group: 'org.glassfish', module: 'javax.servlet'
+        implementation.exclude group: 'org.eclipse.jetty.orbit', module: 'javax.servlet'
+        implementation.exclude group: 'org.apache.spark', module: 'spark-network-common_2.10'
+        implementation.exclude group: 'com.esotericsoftware.minlog', module: 'minlog'
+        implementation.exclude group: 'org.apache.hadoop', module: 'hadoop-yarn-common'
+        implementation.exclude group: 'org.spark-project.spark', module: 'unused'
+        implementation.exclude group: 'org.apache.spark', module:'spark-unsafe_2.10'
+        implementation.exclude group: 'org.apache.spark', module:'spark-streaming_2.10'
+        implementation.exclude group: 'org.apache.spark', module:'spark-catalyst_2.10'
+        implementation.exclude group: 'org.apache.spark', module:'spark-graphx_2.10'
+        implementation.exclude group: 'org.apache.spark', module:'spark-launcher_2.10'
+        implementation.exclude group: 'org.apache.spark', module:'spark-network-shuffle_2.10'
+        implementation.exclude group: 'org.apache.spark', module:'spark-sql_2.10'
+    }
 }
+
+//task repackJars(type: Zip){
+//    println 'Excluding duplicated classes'
+//    from (zipTree('libs/spark-core_2.10-1.6.0.jar')){
+//        exclude '**/org/apache/spark/unused/UnusedStubClass.class'
+//    }
+//    println 'Repackaging Jar'
+//    archiveName 'spark-core_2.10-1.6.0.jar'
+//    destinationDir(file('libs/'))
+//}
+//preBuild.dependsOn repackJars
 
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
@@ -30,5 +68,9 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+
+    implementation 'com.jason-goodwin:better-monads:0.4.0'
+    //implementation 'org.apache.spark:spark-core_2.10:1.6.1'
+    //implementation 'org.apache.spark:spark-sql_2.10:1.6.1
 
 }
