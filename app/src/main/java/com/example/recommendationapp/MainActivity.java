@@ -23,4 +23,9 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(getApplicationContext(), oldMovieActivity01.class);
         startActivity(intent);
     }
+
+    public void mainSearchClick(View v){
+        Intent intent = new Intent(getApplicationContext(), searchMovieActivity01.class);
+        startActivity(intent);
+    }
 }
