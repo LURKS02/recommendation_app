@@ -11,4 +11,6 @@ public class newMovieActivity01 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_movie01);
     }
+
+
 }
